@@ -33,7 +33,11 @@ export function formReducer(state = initialFormState, action: FormAction): FormD
 				},
 			};
 		case "RESET_FORM":
-			return initialFormState;
+			return {
+				personalInfo: { firstName: "", lastName: "", email: "", date: new Date() },
+				address: { street: "", city: "", cState: "", code: "" },
+				preferences: { newsLetter: true, notifications: false, theme: "light" },
+			};
 
 		default:
 			return state;

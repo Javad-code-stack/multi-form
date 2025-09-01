@@ -7,12 +7,18 @@ const Summary = () => {
 	const { state, dispatch } = useFormContext();
 	const navigate = useNavigate();
 
+	function handleSubmit() {
+		dispatch({ type: "RESET_FORM" });
+	}
+
 	const prevPage = () => {
 		navigate("/preferences");
 	};
 	return (
 		<main className="w-full self-center place-self-center z-50">
-			<div className="flex flex-col justify-items-center content-between gap-5 place-items-end">
+			<form
+				onSubmit={handleSubmit}
+				className="flex flex-col justify-items-center content-between gap-5 place-items-end">
 				<h1 className="font-bold text-2xl md:text-4xl text-center self-center">خلاصه اطلاعات</h1>
 				<div className="flex flex-col items-start gap-2 w-full">
 					<h2 className="font-bold text-xl">اطلاعات شخصی</h2>
@@ -58,11 +64,11 @@ const Summary = () => {
 					<Button type="button" onClick={prevPage} className="mt-12 cursor-pointer">
 						بخش قبلی
 					</Button>
-					<Button type="button" variant={"secondary"} className="mt-12 cursor-pointer">
+					<Button type="submit" variant={"secondary"} className="mt-12 cursor-pointer">
 						ارسال اطلاعات
 					</Button>
 				</div>
-			</div>
+			</form>
 		</main>
 	);
 };
